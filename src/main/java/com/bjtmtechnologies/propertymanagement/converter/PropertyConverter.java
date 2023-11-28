@@ -9,27 +9,29 @@ public class PropertyConverter {
 
     public PropertyEntity convertDTOToEntity(PropertyDTO propertyDTO) {
         //convert property DTO into Entity type
-        PropertyEntity pe = new PropertyEntity();
-        pe.setTitle(propertyDTO.getTitle());
-        pe.setAddress(propertyDTO.getAddress());
-        pe.setOwnerEmail(propertyDTO.getOwnerEmail());
-        pe.setOwnerName(propertyDTO.getOwnerName());
-        pe.setDescription(propertyDTO.getDescription());
-        pe.setPrice(propertyDTO.getPrice());
+        PropertyEntity propertyEntity = new PropertyEntity();
+        propertyEntity.setTitle(propertyDTO.getTitle());
+        propertyEntity.setAddress(propertyDTO.getAddress());
+        propertyEntity.setOwnerEmail(propertyDTO.getOwnerEmail());
+        propertyEntity.setOwnerName(propertyDTO.getOwnerName());
+        propertyEntity.setDescription(propertyDTO.getDescription());
+        propertyEntity.setPrice(propertyDTO.getPrice());
 
-        return pe;
+        return propertyEntity;
     }
 
     public PropertyDTO convertEntityToDTO(PropertyEntity propertyEntity) {
-        PropertyDTO pd = new PropertyDTO();
-        pd.setTitle(propertyEntity.getTitle());
-        pd.setAddress(propertyEntity.getAddress());
-        pd.setOwnerEmail(propertyEntity.getOwnerEmail());
-        pd.setOwnerName(propertyEntity.getOwnerName());
-        pd.setDescription(propertyEntity.getDescription());
-        pd.setPrice(propertyEntity.getPrice());
+        PropertyDTO propertyDTO = new PropertyDTO();
 
-        return pd;
+        propertyDTO.setId(propertyEntity.getId());
+        propertyDTO.setTitle(propertyEntity.getTitle());
+        propertyDTO.setAddress(propertyEntity.getAddress());
+        propertyDTO.setOwnerEmail(propertyEntity.getOwnerEmail());
+        propertyDTO.setOwnerName(propertyEntity.getOwnerName());
+        propertyDTO.setDescription(propertyEntity.getDescription());
+        propertyDTO.setPrice(propertyEntity.getPrice());
+
+        return propertyDTO;
 
     }
 }

@@ -22,7 +22,7 @@ public class PropertyController {
 
     @PostMapping("/properties")
     public ResponseEntity<PropertyDTO> saveProperty(@RequestBody PropertyDTO propertyDTO){
-        propertyService.saveProperty(propertyDTO);
-        return new ResponseEntity<PropertyDTO>(propertyDTO, HttpStatus.CREATED);
+        propertyDTO = propertyService.saveProperty(propertyDTO);
+        return new ResponseEntity<>(propertyDTO, HttpStatus.CREATED);
     }
 }

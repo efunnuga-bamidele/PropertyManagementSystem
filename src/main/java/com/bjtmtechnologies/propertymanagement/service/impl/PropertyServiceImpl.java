@@ -19,7 +19,8 @@ public class PropertyServiceImpl implements PropertyService {
     public PropertyDTO saveProperty(PropertyDTO propertyDTO) {
        PropertyEntity pe =  propertyConverter.convertDTOToEntity(propertyDTO);
        pe = propertyRepository.save(pe);
+       propertyDTO = propertyConverter.convertEntityToDTO(pe);
 
-       return propertyConverter.convertEntityToDTO(pe);
+       return propertyDTO;
     }
 }
