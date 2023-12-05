@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PropertyServiceImpl implements PropertyService {
@@ -37,5 +38,24 @@ public class PropertyServiceImpl implements PropertyService {
           propList.add(dto);
         }
         return propList;
+    }
+
+    @Override
+    public PropertyDTO updateProperty(PropertyDTO propertyDTO, Long propertyId) {
+        Optional<PropertyEntity> optEn = propertyRepository.findById(propertyId);
+        PropertyDTO dto = null;
+        if(optEn.isPresent()){
+            PropertyEntity pe = optEn.get();
+
+            pe.setTitle(propertyDTO.getTitle());
+            pe.setAddress(propertyDTO.getAddress());
+            pe.setOwnerEmail(propertyDTO.getOwnerEmail());
+            pe.setOwnerName(propertyDTO.getOwnerName());
+            pe.setDescription(propertyDTO.getDescription());
+            pe.setPrice(propertyDTO.getPrice());
+            dto = propertyConverter.convertEntityToDTO(pe);
+            propertyRepository.save(pe);
+        }
+        return dto;
     }
 }
